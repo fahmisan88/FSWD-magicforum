@@ -1,0 +1,33 @@
+.about-background {
+  background-image: asset-url("discussion.jpeg");
+  height: 50vh;
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-background-2 {
+  background-color: #b3ffb3;
+  height: 40vh;
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.about-text {
+  color: red;
+  font-size: 70px;
+}
+.about-text2 {
+  color: black;
+  font-size: 35px;
+}
