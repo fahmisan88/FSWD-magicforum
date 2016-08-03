@@ -1,11 +1,13 @@
 <div class="topic-background">
-<h1>Topics</h1>
+<h1 class="topic-text" >Topics</h1>
 </div>
 
+<div class="topic-parent">
 <% @topics.each do |topic| %>
-  <div class="topic">
+  <div class="topic-child">
     <h3><%= topic.title %></h3>
     <h5><%= topic.description %></h5>
     <%= link_to topic.title, topic_path(topic) %>
   </div>
+</div>
 <% end %>
