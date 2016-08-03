@@ -1,0 +1,151 @@
+@import "font-awesome";
+.background {
+  background-image: asset-url("mountain.jpeg");
+  height: calc(100vh - 52px);
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome{
+  color: white;
+  font-size: 70px;
+}
+
+
+.background2 {
+  background-color: green;
+  height: 40vh;
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 50px auto;
+  justify-content: center;
+}
+
+.feature {
+  flex: 2 0 280;
+  margin: 20px 10px;
+
+}
+
+@media all and (max-width:1199px) {
+  .features {
+    max-width: 600px;
+  }
+}
+
+.minipics {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 50px auto;
+  justify-content: center;
+}
+
+.image-setting {
+  width: 300px;
+  height: 30vh;
+}
+
+.image_tag {
+  position: relative;
+}
+
+.image_tag:hover .invisible-layout {
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.invisible-layout {
+  font-style: italic;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  display: flex;
+  justify-content:center;
+  background-color: yellow;
+  align-items: center;
+}
+
+.featurecolor {
+  color: green;
+}
+
+.featurecolor1 {
+  color: blue;
+}
+
+.featurecolor2 {
+  color: red;
+}
+
+.featurecolor3 {
+  color: yellow;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 50px auto;
+  justify-content: center;
+}
+
+
+.bottom {
+  background-color: white;
+  height: 80vh;
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: flex-start;;
+  justify-content: center;
+}
+
+.short-underline {
+  width: 300px;
+  border-bottom: 2px solid orange;
+}
+.my_contact {
+  font-size: 50px;
+}
+
+.bottom-icon {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 10px auto;
+  justify-content: center;
+}
+
+.last-icon {
+  flex: 1 0 280px;
+  margin: 20px 10px;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 50px auto;
+  justify-content: center;
+}
