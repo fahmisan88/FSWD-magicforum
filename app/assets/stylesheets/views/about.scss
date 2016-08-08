@@ -12,7 +12,7 @@
 
 .about-background-2 {
   background-color: #b3ffb3;
-  height: 40vh;
+  height: 50vh;
   width: 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -20,14 +20,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 
 .about-text {
-  color: red;
+  background: #b3ffb3;
+  border-style: solid;;
+  border-color: #b3ffb3;
+  color: black;
   font-size: 70px;
 }
 .about-text2 {
   color: black;
   font-size: 35px;
+}
+
+.profile-background{
+  display: flex;
+  margin: 40px auto;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
 }

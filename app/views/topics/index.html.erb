@@ -1,13 +1,27 @@
-<div class="topic-background">
-<h1 class="topic-text" >Topics</h1>
-</div>
+<div class="topic">
 
-<div class="topic-parent">
-<% @topics.each do |topic| %>
-  <div class="topic-child">
-    <h3><%= topic.title %></h3>
-    <h5><%= topic.description %></h5>
-    <%= link_to topic.title, topic_path(topic) %>
+  <div class="topic-background">
+  <h1 class="topic-text" >Topics</h1>
   </div>
+
+  <h1 class="topic-button text-center">
+    <%= link_to "Create Topic", new_topic_path%>
+</h1>
+
+  <div class="topic-parent">
+  <% @topics.each do |topic| %>
+    <div class="topic-child">
+      <h3><%= link_to topic.title, topic_posts_path(topic,@post) %></h3>
+      <h3><% topic.title %></h3>
+      <h5><%= topic.description %></h5>
+      <!-- <button type="button">Edit</button> -->
+      <%= link_to "Edit Topic", edit_topic_path(topic)%>
+      <br>
+      <%= link_to "Delete", topics_path(@topic), method: :delete, data: { confirm: "Delete?" }%>
+
+    </div>
+    <% end %>
+  </div>
+
+
 </div>
-<% end %>

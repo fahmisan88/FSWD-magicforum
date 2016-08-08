@@ -1,0 +1,19 @@
+<%= form_for(@post, url: topic_post_path(@post, @topic), html: { id: "post-update-form" }) do |f| %>
+  <h1 class="text-center">
+    Create Post
+  </h1>
+
+  <div class="form-group">
+    <h4> <%= f.label :title_field, "Title" %> </h4>
+    <%= f.text_field :title, required: true, id: "post_title_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <h4> <%= f.label :text_field, "Body" %> </h4>
+    <%= f.text_field :body, id: "post_body_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group text-center">
+    <%= f.submit "Update Post", class: "btn btn-success btn-lg" %>
+  </div>
+<% end %>

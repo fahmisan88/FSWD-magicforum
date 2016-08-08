@@ -17,9 +17,14 @@
     font-size: 70px;
   }
 
+.welcome-text{
+  color: white;
+}
+
+
 
   .background2 {
-    background-color: green;
+    background-color: #99ff99;
     height: 40vh;
     width: 100%;
     background-position: 50% 50%;
@@ -63,11 +68,11 @@
     height: 30vh;
   }
 
-  .image_tag {
+  .minipics-child {
     position: relative;
   }
 
-  .image_tag:hover .invisible-layout {
+  .minipics-child:hover .invisible-layout {
     opacity: 0.5;
     transition: all 0.3s ease-in-out;
 
@@ -118,7 +123,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    align-items: flex-start;;
+    align-items: flex-start;
     justify-content: center;
   }
 
@@ -132,19 +137,23 @@
 
   .bottom-icon {
     display: flex;
+    flex: 0 0 280px;
     flex-wrap: wrap;
-    max-width: 800px;
-    margin: 10px auto;
+    max-width: 100%;
     justify-content: center;
+    align-items: center;
+    align-items: flex-start;
   }
 
   .last-icon {
-    flex: 1 0 280px;
+    flex: 0 0 280px;
     margin: 20px 10px;
+
   }
 
   .contact-container {
     display: flex;
+    height: 250px;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 50px auto;

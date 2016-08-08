@@ -7,7 +7,7 @@
 
 <div class="background2">
   <div class="content">
-    <h1> Where cool people meet </h1>
+    <h1 class="welcome-text"> Where cool people meet </h1>
   </div>
 </div>
 
@@ -35,25 +35,25 @@
 </section>
 
 <section class= "minipics">
-  <div class= "image_tag">
+  <div class= "minipics-child">
     <div class= "invisible-layout">
         <h3> Cars </h3>
     </div>
     <%= image_tag 'cars.jpeg', class: "image-setting" %>
   </div>
-  <div class= "image_tag">
+  <div class= "minipics-child">
     <div class= "invisible-layout">
         <h3 > Sports </h3>
     </div>
     <%= image_tag 'surf.jpeg', class: "image-setting" %>
   </div>
-  <div class= "image_tag">
+  <div class= "minipics-child">
     <div class= "invisible-layout">
         <h3 > Fashion </h3>
     </div>
     <%= image_tag 'shoe.jpeg', class: "image-setting" %>
   </div>
-  <div class= "image_tag">
+  <div class= "minipics-child">
     <div class= "invisible-layout">
         <h3 > Technology </h3>
     </div>
@@ -74,14 +74,16 @@
 </section>
 
 <section class="bottom-icon">
-  <div class="last-icon">
+  <div class="last-icon text-center">
     <%= fa_icon 'phone-square 5x' %>
     <h4> 03-55445544 </h4>
 
   </div>
-  <div class="las">
+  <div class="last-icon text-center">
     <%= fa_icon 'envelope 5x'%>
     <h4> santa@claus.com </h4>
   </div>
 </section>
+
+
 </div>
