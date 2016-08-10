@@ -1,0 +1,13 @@
+<h1>Comments</h1>
+
+<h1 class="topic-button text-center">
+  <%= link_to "Add Comment", new_topic_post_comment_path%>
+</h1>
+
+
+<% @comments.each do |comment| %>
+  <div class="comment">
+    <h3><%= comment.body %></h3>
+    <%= link_to "Edit Comment", edit_topic_post_comment_path(comment.post.topic,comment.post,comment)%>
+  </div>
+<% end %>

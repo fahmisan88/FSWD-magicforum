@@ -17,7 +17,7 @@
       <!-- <button type="button">Edit</button> -->
       <%= link_to "Edit Topic", edit_topic_path(topic)%>
       <br>
-      <%= link_to "Delete", topics_path(@topic), method: :delete, data: { confirm: "Delete?" }%>
+      <%= link_to "Delete", topic_path(topic), method: :delete, data: { confirm: "Delete?" }%>
 
     </div>
     <% end %>

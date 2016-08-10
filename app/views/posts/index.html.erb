@@ -1,18 +1,25 @@
 <h1>Posts</h1>
 
+<h1 class="topic-button text-center">
+  <%= link_to "Create New Post", new_topic_post_path%>
+</h1>
+
+
 <% @posts.each do |post| %>
   <div class="post">
     <h3><%= post.title %></h3>
     <h5><%= post.body %></h5>
-    <%= link_to "Comment on this post", topic_posts_path(post,@topic) %>
+      <%= image_tag post.image %>
     <br>
-    <%= link_to "Delete", topic_posts_path(@topic), method: :delete, data: { confirm: "Delete?" }%>
+    <%= link_to "Comment on this post", topic_post_comments_path(@topic,post) %>
+    <br>
+    <%= link_to "Edit Post", edit_topic_post_path(@topic,post)%>
+    <br>
+    <%= link_to "Delete Post", topic_post_path(@topic,post), method: :delete, data: { confirm: "Delete?" }%>
   </div>
 <% end %>
 
 
-<h1 class="topic-button text-center">
-  <%= link_to "Create New Post", new_topic_post_path%>
-</h1>
+
 
 <!--read more code from other, pair programming more, network more  -->

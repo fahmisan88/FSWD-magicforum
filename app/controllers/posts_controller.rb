@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to topic_posts_path(@topic)
     else
-      redirect_to edit_post_path(@topic, @post)
+      redirect_to edit_topic_post_path(@topic, @post)
     end
   end
 
@@ -48,6 +48,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image)
   end
 end

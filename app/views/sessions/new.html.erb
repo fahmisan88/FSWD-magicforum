@@ -1,0 +1,46 @@
+<!-- <%= form_tag sessions_path do %>
+
+<h1 class="text-center">
+  Login Account
+</h1>
+
+  <div class="form-group">
+    <h4>Email </h4>
+    <%= text_field_tag :email, params[:email], id: "email_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <h4> Password"</h4>
+    <%= password_field_tag :password, autocomplete: 'off', id: "password_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group text-center">
+    <%= submit_tag "Login", class: "btn btn-success btn-lg" %>
+  </div>
+
+  <div class="form-group text-center">
+    <li><%= link_to "New User", new_user_path %></li>
+  </div>
+
+<% end %> -->
+
+<%= form_for(@user, url: sessions_path, html: { id: "user-create-form" }) do |f| %>
+
+<h1 class="text-center">
+  Login
+</h1>
+
+  <div class="form-group">
+    <h4> <%= f.label :email_field, "Email" %> </h4>
+    <%= f.text_field :email, required: true, id: "user_email_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <h4> <%= f.label :password_field, "Password" %> </h4>
+    <%= f.password_field :password, id: "user_password_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group text-center">
+    <%= f.submit "Login", class: "btn btn-success btn-lg" %>
+  </div>
+<% end %>
