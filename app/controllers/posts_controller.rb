@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def index
     @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
@@ -8,11 +9,13 @@ class PostsController < ApplicationController
   def new
     @topic = Topic.find_by(id: params[:topic_id])
     @post = Post.new
+
   end
 
   def create
     @topic = Topic.find_by(id: params[:topic_id])
-    @post = Post.new(post_params.merge(topic_id: params[:topic_id]))
+    @post = current_user.posts.build(post_params.merge(topic_id: params[:topic_id]))
+
 
     if @post.save
       redirect_to topic_posts_path(@topic)
@@ -24,11 +27,13 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find_by(id: params[:id])
     @topic = @post.topic
+    authorize @post
   end
 
   def update
     @topic = Topic.find_by(id: params[:topic_id])
     @post = Post.find_by(id: params[:id])
+    authorize @post
 
     if @post.update(post_params)
       redirect_to topic_posts_path(@topic)
@@ -39,6 +44,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find_by(id: params[:id])
+    authorize @post
     @topic = @post.topic
     if @post.destroy
       redirect_to topic_posts_path(@topic)

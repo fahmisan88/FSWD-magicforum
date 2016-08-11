@@ -24,7 +24,7 @@
 
 <% end %> -->
 
-<%= form_for(@user, url: sessions_path, html: { id: "user-create-form" }) do |f| %>
+<%= form_for(:user, url: sessions_path, html: { id: "user-create-form" }) do |f| %>
 
 <h1 class="text-center">
   Login
@@ -42,5 +42,9 @@
 
   <div class="form-group text-center">
     <%= f.submit "Login", class: "btn btn-success btn-lg" %>
+  </div>
+  <br>
+  <div class= "forget_password text-center">
+  <%= link_to "Forget Password?", new_password_reset_path %>
   </div>
 <% end %>

@@ -7,10 +7,12 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def new
     @topic = Topic.new
+    authorize @topic
   end
 
   def create
     @topic = current_user.topics.build(topic_params)
+    authorize @topic
     if @topic.save
       flash[:success] = "You've created a new topic."
       redirect_to topics_path
@@ -22,10 +24,12 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def edit
     @topic = Topic.find_by(id: params[:id])
+    authorize @topic
   end
 
   def update
     @topic = Topic.find_by(id: params[:id])
+    authorize @topic
 
     if @topic.update(topic_params)
       redirect_to topics_path
@@ -36,6 +40,8 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def destroy
     @topic = Topic.find_by(id: params[:id])
+    authorize @topic
+    
     if @topic.destroy
       redirect_to topics_path
     else
