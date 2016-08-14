@@ -1,0 +1,11 @@
+<div class="post">
+  <h3><%= post.title %></h3>
+  <h5><%= post.body %></h5>
+    <%= image_tag post.image %>
+  <br>
+  <%= link_to "Comment on this post", topic_post_comments_path(@topic,post) %>
+  <br>
+  <%= link_to "Edit Post", edit_topic_post_path(@topic,post)%>
+  <br>
+  <%= link_to "Delete Post", topic_post_path(@topic,post), method: :delete, data: { confirm: "Delete?" }%>
+</div>

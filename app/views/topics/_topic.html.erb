@@ -1,0 +1,12 @@
+<div class="topic-parent">
+  <div class="topic-child">
+    <h3><%= link_to topic.title, topic_posts_path(topic,@post) %></h3>
+    <h3><% topic.title %></h3>
+    <h5><%= topic.description %></h5>
+    <!-- <button type="button">Edit</button> -->
+    <%= link_to "Edit Topic", edit_topic_path(topic)%>
+    <br>
+    <%= link_to "Delete", topic_path(topic), method: :delete, data: { confirm: "Delete?" }%>
+
+  </div>
+</div>

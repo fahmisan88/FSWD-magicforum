@@ -1,26 +1,31 @@
 class PostsController < ApplicationController
+respond_to :js
 before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def index
     @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
-    @posts = @topic.posts.order("created_at DESC")
-  end
-
-  def new
-    @topic = Topic.find_by(id: params[:topic_id])
+    @posts = @topic.posts.order("created_at ASC")
     @post = Post.new
-
   end
+
+  # def new
+  #   @topic = Topic.find_by(id: params[:topic_id])
+  #   @post = Post.new
+  # end
 
   def create
     @topic = Topic.find_by(id: params[:topic_id])
     @post = current_user.posts.build(post_params.merge(topic_id: params[:topic_id]))
+    @new_post = Post.new
+
 
 
     if @post.save
-      redirect_to topic_posts_path(@topic)
+      flash.now[:success] = "You have created a new post!"
+      # redirect_to topic_posts_path(@topic)
     else
-      render new_topic_post_path(@topic)
+      flash.now[:danger] = @post.errors.full_messages
+      # render new_topic_post_path(@topic)
     end
   end
 

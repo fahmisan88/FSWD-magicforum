@@ -39,6 +39,7 @@ gem 'pry'
 gem 'figaro'
 gem 'pundit'
 gem 'responders'
+gem 'kaminari'
 end
 
 group :development do

@@ -1,0 +1,8 @@
+<div class="comment text-center">
+  <h3><%= comment.body %></h3>
+  <%= image_tag comment.image %>
+  <br>
+  <%= link_to "Edit Comment", edit_topic_post_comment_path(comment.post.topic,comment.post,comment)%>
+  <br>
+  <%= link_to "Delete Comment", topic_post_comment_path(comment.post.topic,comment.post,comment), method: :delete, data: { confirm: "Delete?" }%>
+</div>

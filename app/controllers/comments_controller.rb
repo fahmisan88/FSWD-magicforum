@@ -5,25 +5,28 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
   def index
     @post = Post.includes(:comments).find_by(id: params[:post_id])
     @topic = @post.topic
-    @comments =@post.comments.order("created_at DESC")
-  end
-
-  def new
-    @post = Post.find_by(id: params[:post_id])
-    @topic = @post.topic
+    @comments =@post.comments.order("created_at ASC").page params[:page]
     @comment = Comment.new
   end
 
+  # def new
+  #   @post = Post.find_by(id: params[:post_id])
+  #   @topic = @post.topic
+  #   @comment = Comment.new
+  # end
+
   def create
     @post = Post.find_by(id: params[:post_id])
-    @topic = @post.topic
+    # @topic = @post.topic
     @comment = current_user.comments.build(comment_params.merge(post_id: params[:post_id]))
-
+    @new_comment = Comment.new
 
     if @comment.save
-      redirect_to topic_post_comments_path(@topic, @post)
+      flash.now[:success] = "You have created a new comment!"
+      # redirect_to topic_post_comments_path(@topic, @post)
     else
-      redirect_to new_topic_post_comment_path(@topic, @post)
+      flash.now[:danger] = @comment.errors.full_messages
+      # redirect_to new_topic_post_comment_path(@topic, @post)
     end
   end
 

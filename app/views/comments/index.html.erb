@@ -1,17 +1,24 @@
 <h1>Comments</h1>
 
-<h1 class="topic-button text-center">
+<!-- <h1 class="topic-button text-center">
   <%= link_to "Add Comment", new_topic_post_comment_path%>
-</h1>
+</h1> -->
 
 
+
+<div id="comments">
 <% @comments.each do |comment| %>
-  <div class="comment">
-    <h3><%= comment.body %></h3>
-    <%= image_tag comment.image %>
-    <br>
-    <%= link_to "Edit Comment", edit_topic_post_comment_path(comment.post.topic,comment.post,comment)%>
-    <br>
-    <%= link_to "Delete Comment", topic_post_comment_path(comment.post.topic,comment.post,comment), method: :delete, data: { confirm: "Delete?" }%>
-  </div>
+   <%= render partial: "comment", locals: { comment: comment, post: @post } %>
 <% end %>
+</div>
+
+<div id="comments-form-container">
+  <%= render partial: "form", locals: { comment: @comment, post: @post } %>
+</div>
+
+<div id="pagination">
+<nav>
+  <%= paginate @comments %>
+
+</nav>
+</div>

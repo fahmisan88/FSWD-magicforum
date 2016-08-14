@@ -1,10 +1,11 @@
-<%= form_for(@comment, url: topic_post_comment_path(@topic,@post, @comment), html: { id: "comment-update-form" }) do |f| %>
-<h1 class="text-center">
-  Edit Comment
-</h1>
+<div class="create_form">
+<%= form_for(comment, url: topic_post_comments_path(post), remote: true, html: { id: "comment-create-form" }) do |f| %>
+  <h1 class="text-center">
+    Create Comment
+  </h1>
 
   <div class="form-group">
-    <h4 class="text-center"> Edit Comment Image </h4>
+    <h4 class="text-center"> Comment Image </h4>
     <div id="preview-image">
       <% if @comment.image? %>
         <%= image_tag @comment.image, class: "img-settings img-responsive center-block" %>
@@ -22,6 +23,7 @@
   </div>
 
   <div class="form-group text-center">
-    <%= f.submit "Update Comment", class: "btn btn-success btn-lg" %>
+    <%= f.submit "Create Comment", class: "btn btn-success btn-lg" %>
   </div>
 <% end %>
+</div>
