@@ -22,6 +22,7 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
     @new_comment = Comment.new
 
     if @comment.save
+      CommentBroadcastJob.perform_later("create", @comment)
       flash.now[:success] = "You have created a new comment!"
       # redirect_to topic_post_comments_path(@topic, @post)
     else
@@ -45,9 +46,11 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
 
     if @comment.update(comment_params)
-      redirect_to topic_post_comments_path(@topic,@post)
+      flash.now[:success] = "You have edited a comment!"
+      # redirect_to topic_post_comments_path(@topic,@post)
     else
-      redirect_to edit_topic_post_comment_path(@topic,@post, @comment)
+      flash.now[:danger] = @comment.errors.full_messages
+      # redirect_to edit_topic_post_comment_path(@topic,@post, @comment)
     end
   end
 
@@ -57,7 +60,8 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
     authorize = @comment
 
     if @comment.destroy
-      redirect_to topic_post_comments_path(@post)
+      flash.now[:success] = "You deleted a comment!"
+      # redirect_to topic_post_comments_path(@post)
     end
   end
 

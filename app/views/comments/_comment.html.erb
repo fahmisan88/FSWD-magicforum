@@ -1,8 +1,16 @@
-<div class="comment text-center">
+<div id="comment_<%=comment.id%>" class= "<%=extra_class%>">
   <h3><%= comment.body %></h3>
   <%= image_tag comment.image %>
   <br>
-  <%= link_to "Edit Comment", edit_topic_post_comment_path(comment.post.topic,comment.post,comment)%>
-  <br>
-  <%= link_to "Delete Comment", topic_post_comment_path(comment.post.topic,comment.post,comment), method: :delete, data: { confirm: "Delete?" }%>
+  <div class=control-panel>
+    <% if comment.user == current_user || current_user&.admin? || current_user&.moderator? %>
+      <%= link_to "Edit Comment", edit_topic_post_comment_path(comment.post.topic,comment.post,comment), remote: true %>
+      <br>
+      <%= link_to "Delete Comment", topic_post_comment_path(comment.post.topic,comment.post,comment), method: :delete, data: { confirm: "Delete?" },remote: true %>
+    <% end %>
+  </div>
 </div>
+
+<!-- <script>
+  $("comment_#{comment_id}") put inside post_channel.coffee
+</script> -->

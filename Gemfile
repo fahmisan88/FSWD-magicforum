@@ -40,6 +40,7 @@ gem 'figaro'
 gem 'pundit'
 gem 'responders'
 gem 'kaminari'
+gem 'redis', '~>3.2'
 end
 
 group :development do
