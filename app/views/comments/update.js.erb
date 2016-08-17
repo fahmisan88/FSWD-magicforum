@@ -1,5 +1,4 @@
 $('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
 
-<% if @comment.persisted? %>
-  $('#comment_<%= @comment.id %>').html("<%=j render partial: 'comments/comment', locals: { comment: @comment } %>")
-<% end %>
+
+  // $('#comment_<%= @comment.id %>').html("<%=j render partial: 'comments/comment', locals: { comment: @comment } %>")

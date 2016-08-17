@@ -3,7 +3,7 @@
 
   <div id="comments">
   <% @comments.each do |comment| %>
-     <%= render partial: "comment", locals: { comment: comment, post: @post, extra_class: "" } %>
+     <%= render partial: "comment", locals: { comment: comment, post: @post,} %>
   <% end %>
   </div>
 

@@ -46,6 +46,7 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
 
     if @comment.update(comment_params)
+      CommentBroadcastJob.perform_later("update", @comment)
       flash.now[:success] = "You have edited a comment!"
       # redirect_to topic_post_comments_path(@topic,@post)
     else
@@ -60,6 +61,7 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
     authorize = @comment
 
     if @comment.destroy
+      CommentBroadcastJob.perform_now("destroy", @comment)
       flash.now[:success] = "You deleted a comment!"
       # redirect_to topic_post_comments_path(@post)
     end
