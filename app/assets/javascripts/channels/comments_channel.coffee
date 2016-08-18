@@ -1,4 +1,4 @@
-postsChannelFunctions = () ->
+commentsChannelFunctions = () ->
 
   checkMe = (comment_id, username) ->
     unless $('meta[name=admin]').length > 0 || $("meta[user=#{username}]").length > 0
@@ -23,8 +23,8 @@ postsChannelFunctions = () ->
 
   if $('.commentsection').length > 0
 
-    App.posts_channel = App.cable.subscriptions.create {
-      channel: "PostsChannel"
+    App.comments_channel = App.cable.subscriptions.create {
+      channel: "CommentsChannel"
     },
 
     connected: () ->
@@ -39,4 +39,4 @@ postsChannelFunctions = () ->
         when "update" then updateComment(data)
         when "destroy" then destroyComment(data)
 
-$(document).on 'turbolinks:load', postsChannelFunctions
+$(document).on 'turbolinks:load', commentsChannelFunctions

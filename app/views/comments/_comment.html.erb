@@ -8,9 +8,25 @@
       <br>
       <%= link_to "Delete Comment", topic_post_comment_path(comment.post.topic,comment.post,comment), method: :delete, data: { confirm: "Delete?" },remote: true %>
     <% end %>
+      <br>
+      <%= link_to "Like", upvote_path(comment_id: comment.id), method: :post, remote: true %>
+      <br>
+      <%= link_to "Dislike", downvote_path(comment_id: comment.id), method: :post, remote: true %>
+      <br>
+      <span> LIKES <%= comment.total_likes%>!</span>
+      <br>
+      <span> DISLIKES <%= comment.total_dislikes%>!</span>
   </div>
 </div>
 
 <!-- <script>
   $("comment_#{comment_id}") put inside post_channel.coffee
 </script> -->
+
+<!-- current_user.votes.find_by(comment_id: comment.id).value
+if value == +1
+  lin_to unlike
+  else
+  link_T Like
+end
+-->
