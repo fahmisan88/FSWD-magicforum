@@ -26,23 +26,22 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
   end
 
   def edit
-    @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.friendly.find(params[:id])
     authorize @topic
   end
 
   def update
-    @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.friendly.find(params[:id])
     authorize @topic
 
-    if @topic.update(topic_params)
+    if @topic.update(topic_params.merge(slug: topic_params[:title].gsub(" ","-")))
       redirect_to topics_path
     else
       redirect_to edit_topic_path(@topic)
     end
   end
-
   def destroy
-    @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.friendly.find(params[:id])
     authorize @topic
 
     if @topic.destroy
@@ -57,5 +56,4 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
     def topic_params
       params.require(:topic).permit(:title, :description)
     end
-
 end

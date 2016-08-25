@@ -1,7 +1,7 @@
 class UserPolicy < ApplicationPolicy
 
   def new?
-    user.present? && record.user == user || user_has_power?
+    user.present? && record.id == user.id
   end
 
   def create?
@@ -9,11 +9,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    new?
+    new? || user.admin?
   end
 
   def update?
-    new?
+    new? || user.admin?
   end
 
   def destroy?

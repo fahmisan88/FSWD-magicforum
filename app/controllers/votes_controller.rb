@@ -6,12 +6,14 @@ before_action :check_find_or_create
   def upvote
     voting(1)
     VoteBroadcastJob.perform_later("upvote",@comment)
+    authorize @vote
     flash.now[:alert] = "You like this comment!"
   end
 
   def downvote
     voting(-1)
     VoteBroadcastJob.perform_later("downvote",@comment)
+    authorize @vote
     flash.now[:alert] = "You dislike this comment!"
   end
 

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :authenticate!, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      flash[:success] = "You've register!"
       redirect_to topics_path
     else
       render :new
@@ -17,13 +19,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(id: params[:id])
+    authorize @user
+
   end
 
   def update
     @user = User.find_by(id: params[:id])
-
+    authorize @user
     if @user.update(user_params)
-      
+
       redirect_to root_path
     else
       render :edit

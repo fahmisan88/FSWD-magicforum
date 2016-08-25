@@ -3,7 +3,7 @@ respond_to :js
 before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
 
   def index
-    @topic = Topic.includes(:posts).find_by(id: params[:topic_id])
+    @topic = Topic.includes(:posts).friendly.find(params[:topic_id])
     @posts = @topic.posts.order("created_at ASC")
     @post = Post.new
   end
@@ -14,8 +14,8 @@ before_action :authenticate!, only: [:create, :edit, :update, :new, :destroy]
   # end
 
   def create
-    @topic = Topic.find_by(id: params[:topic_id])
-    @post = current_user.posts.build(post_params.merge(topic_id: params[:topic_id]))
+    @topic = Topic.friendly.find(params[:topic_id])
+    @post = current_user.posts.build(post_params.merge(topic_id: @topic.id))
     @new_post = Post.new
 
 

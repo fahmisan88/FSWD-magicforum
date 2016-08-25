@@ -1,7 +1,7 @@
 @import "font-awesome";
 .landing{
   .background {
-    background-image: asset-url("mountain.jpeg");
+    background-image: asset-url("food.jpeg");
     height: calc(100vh - 52px);
     width: 100%;
     background-position: 50% 50%;
@@ -13,7 +13,10 @@
   }
 
   .welcome{
-    color: white;
+    background: white;
+    border-style: solid;
+    border-color: black;
+    color: black;
     font-size: 70px;
   }
 

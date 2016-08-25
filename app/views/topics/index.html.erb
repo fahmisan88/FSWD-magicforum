@@ -4,19 +4,17 @@
   <h1 class="topic-text" >Topics</h1>
   </div>
 
-  <h1 class="topic-button text-center">
-    <%= link_to "Create Topic", new_topic_path%>
-</h1>
+  
 
 <div id= "topics-form-container">
   <%= render partial: "form", locals: {topic: @topic} %>
 </div>
 
 <div id= "topics">
-  
+
   <% @topics.each do |topic| %>
     <%= render partial: "topic", locals: {topic: topic} %>
     <% end %>
-  
+
 
 </div>
