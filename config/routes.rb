@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   end
   post :upvote, to: 'votes#upvote'
   post :downvote, to: 'votes#downvote'
+  # delete :logout, to: 'sessions#destroy' (<-- used when want to remove id from session path destroy)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

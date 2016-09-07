@@ -14,13 +14,13 @@ RSpec.describe VotesController, type: :controller do
 
   describe "upvote" do
     it "should deny upvote if not login" do
-      params = { vote: {value: 1}, comment_id:@comment }
+      params = { comment_id:@comment }
       post :upvote, params: params, xhr: true
       expect(flash[:danger]).to eql("You need to login first")
     end
 
     it "should upvote if user is logged in eventhough not owner of comment" do
-      params = { vote: {value: 1}, comment_id:@comment }
+      params = { comment_id:@comment }
       post :upvote, params: params, xhr: true, session: { id: @user.id }
       vote = Vote.find_by(value: 1)
       expect(Vote.count).to eql(2)
@@ -31,13 +31,13 @@ RSpec.describe VotesController, type: :controller do
 
   describe "downvote" do
     it "should deny downvote if not login" do
-      params = { vote: {value: -1}, comment_id:@comment }
+      params = { comment_id:@comment }
       post :downvote, params: params, xhr: true
       expect(flash[:danger]).to eql("You need to login first")
     end
 
     it "should downvote back after upvote from the same user" do
-      params = {vote: {value: -1}, comment_id:@comment }
+      params = {comment_id:@comment }
       post :downvote, params: params, xhr: true, session: { id: @admin.id }
       vote = Vote.find_by(user_id:@admin.id)
       expect(vote.value).to eql(-1)
@@ -46,7 +46,7 @@ RSpec.describe VotesController, type: :controller do
     end
 
     it "should downvote if user is logged in eventhough not owner of comment" do
-      params = {vote: {value: -1}, comment_id: @comment }
+      params = {comment_id: @comment }
       post :downvote, params: params, xhr: true, session: { id: @user.id }
       vote = Vote.find_by(value: -1)
       expect(vote.value).to eql(-1)
